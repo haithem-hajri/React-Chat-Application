@@ -14,7 +14,7 @@ exports.signup = (req, res) => {
       if (user) {
         return res
           .status(400)
-          .json({ user_exist: "Email or phone already exists" });
+          .json({ user_exist: "Email or phone already exists" }); 
       } else {
         const newUser = new User({
           avatar: url + "/uploads/" + req.file.filename,
@@ -24,7 +24,7 @@ exports.signup = (req, res) => {
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => { 
-            if (err) throw err;
+            if (err) throw err; 
             newUser.password = hash;
             // newUser.avatar = null;
             newUser.save().then((user) => {

@@ -16,7 +16,7 @@ exports.addMessage = async (req, res) => {
     .then((conver) => {
       if (conver) {
         const newMessage = new Message({
-          conversationId: conver.id,
+          conversationId: conver._id,
           sender: req.user.id,
           text: req.body.text,
         });
@@ -52,16 +52,17 @@ exports.addMessage = async (req, res) => {
           members: [req.user.id, req.params.receiverId],
         });
         newConversation.save().then((newConversation) => {
+          console.log('newConversation:',newConversation)
           const newMessage = new Message({
-            conversationId: newConversation.id,
+            conversationId: newConversation._id,
             sender: req.user.id,
             text: req.body.text,
           });
           newMessage
             .save()
             .then((result) => {
-              conver.updatedAt = Date.now();
-              conver.save();
+              newConversation.updatedAt = Date.now();
+              newConversation.save();
               res.status(200).json(result);
               User.findOne({ _id: req.params.receiverId }).exec(function (
                 err,
