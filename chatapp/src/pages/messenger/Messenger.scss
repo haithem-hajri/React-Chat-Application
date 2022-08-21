@@ -1,0 +1,16 @@
+.messenger-container{
+  display: flex;
+  width: 70%;
+  margin: auto;
+  border: 1px solid gainsboro;
+  height: 80vh;
+  @media screen and (max-width: 863px) {
+    width: 100%;
+  }
+}
+.isActive{
+  background-color: "red";
+}
+.notActive{
+  background-color: green;  
+}

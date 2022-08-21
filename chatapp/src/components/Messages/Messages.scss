@@ -1,0 +1,118 @@
+.messages-container {
+  //  padding: 40px;
+  //width: 100%;
+  width: 70%;
+
+  @media screen and (max-width: 863px) {
+    width: 80%;
+  }
+
+  .messages {
+    height: 90%;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 863px) {
+      padding: 5px;
+    }
+
+    .myMessage {
+      background-color: #50A5DC;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      align-self: flex-end;
+      width: fit-content;
+    }
+
+    .friend-message {
+      background-color: rgb(212, 211, 211);
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      align-self: flex-start;
+      width: fit-content;
+    }
+  }
+
+  .add-messages {
+    height: 4%;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .textarea {
+      width: 90%;
+      height: 30px;
+      -moz-border-bottom-colors: none;
+      -moz-border-left-colors: none;
+      -moz-border-right-colors: none;
+      -moz-border-top-colors: none;
+      background: none repeat scroll 0 0 #FFFFFF;
+      border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+      border-image: none;
+      border-radius: 6px 6px 6px 6px;
+      border-style: none solid solid none;
+      border-width: medium 1px 1px medium;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+      color: #555555;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1em;
+      line-height: 1.4em;
+      padding: 5px 8px;
+      transition: background-color 0.2s ease 0s;
+    }
+
+    .emoji-show {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      right: 50px;
+    }
+
+    .emoji-picker-react {
+      position: absolute !important;
+      bottom: 36px !important;
+      right: 50px !important;
+    }
+
+    .send {
+      color: white;
+      height: 40px;
+      background-color: #50A5DC;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      transition: .2s ease-in;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #89c3eb;
+      }
+    }
+  }
+
+}
+
+.messages::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.messages::-webkit-scrollbar {
+  width: 3px;
+  background-color: #F5F5F5;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #50A5DC;
+}

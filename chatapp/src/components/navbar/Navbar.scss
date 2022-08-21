@@ -1,0 +1,268 @@
+@import "../../stylesheets/mixins.scss";
+
+.navigation {
+  display: flex;
+  align-items: center;
+  color: #50A5DC;
+  background-color: white;
+  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  height: 66px;
+  width: 100%;
+  margin: 0;
+  top: 0;
+  z-index: 100000;
+  text-decoration: none;
+  position: fixed;
+
+  .brand-name {
+    color: #50A5DC;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 1rem;
+    text-decoration: none;
+  }
+
+  .hamburger {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: white;
+    background-color: #50A5DC;
+    display: none;
+    text-align: center;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+
+    @media screen and (max-width: 863px) {
+      display: block;
+    }
+
+  }
+
+  .navigation-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    justify-content: space-between;
+    // background-color: black;
+    // height: 100%;
+    width: 80%;
+    list-style: none;
+
+
+    button {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      background-color: #50A5DC;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+
+      &:hover {
+        background-color: #89c3eb;
+      }
+    }
+
+    ul {
+      @include flex();
+      justify-content: flex-end;
+      align-items: center;
+      list-style: none;
+      margin-right: 1rem;
+      width: 60%;
+      margin-left: auto;
+
+      // @media screen and (max-width: 1205px) { 
+      //   width: 100%;
+      // }
+
+      @media screen and (max-width: 863px) {
+        display: none;
+        /* navigation menu is positioned to start 60px from the top of the document (which is directly below the navbar)*/
+        position: absolute;
+        top: 51px;
+        right: -37px;
+        left: -40px;
+        /* stacks the li tags vertically */
+        /* makes menu span full height and width*/
+        width: 100%;
+        height: 100%;
+        // height: calc(100vh - 77px);
+
+      }
+
+     
+
+      li {
+        text-align: center;
+        margin: 0;
+        margin-left: 1rem;
+        font-size: 1em;
+        color: #50A5DC;
+        text-decoration: none;
+
+        @media screen and (max-width: 863px) {
+          text-align: center;
+          margin: 0;
+          padding: 1rem 0;
+          width: 100%;
+          font-size: 1em;
+          color: black;
+          background-color: white;
+        }
+
+        .link {
+          text-decoration: none;
+          color: #50A5DC;
+          position: relative;
+          list-style: none;
+
+          &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #50A5DC;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+          }
+
+          &:hover::after,
+          &:focus::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+          }
+        }
+      }
+    }
+
+    .user-block {
+      @media screen and (max-width: 863px) {
+        margin: 0;
+      }
+    }
+
+    .logged-in-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.25rem;
+      position: relative;
+      margin-left: 1rem;
+
+      &:hover {
+        .dropdown-content {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 863px) {
+        text-align: center;
+        margin: 0;
+        padding: 1rem 0;
+        width: 100%;
+        font-size: 1em;
+        color: black;
+        background-color: white;
+      }
+ 
+      .username {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 22px;
+        right: -10px;
+        background-color: #cbe6fc;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        @media screen and (max-width: 863px) {
+          display: flex;
+          position: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          top: 60px;
+          width: 100%;
+          background-color: white;
+          color: black;
+        }
+
+        a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+
+          &:hover {
+            background-color: #50A5DC;
+            color: white;
+          }
+
+          @media screen and (max-width: 863px) {
+            color: black;
+            padding: 1rem 0;
+          }
+
+        }
+      }
+    }
+  }
+
+  .expanded {
+    ul {
+      display: block;
+      background-color: white;
+      height: 100vh;
+      overflow-y: auto;
+      width: -webkit-fill-available;
+    }
+  }
+}
+
+.dropdown {
+  @media screen and (max-width: 863px) {
+    display: none;
+  }
+
+}
+.notification {
+  margin-left: 1rem;
+  width: 30px;
+  position: relative;
+}
+.notification:hover {
+  background: white;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  padding: 2px 7px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}

@@ -1,0 +1,88 @@
+.convertations-container {
+
+  // background-color: gray;
+  width: 35%;
+  overflow-y: auto;
+  border-right: solid 1px gainsboro;
+  @media screen and (max-width: 863px) {
+    width: 20%;
+   }
+  .convertation {
+    display: flex;
+    align-items: center;
+    padding: 22px;
+    border-bottom: 1px solid rgb(233, 231, 231);
+    cursor: pointer;
+
+    // background-color: #cbe6fc;  
+    &:hover {
+      background-color: #d3edff;
+    }
+
+    .conversation-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      position: relative;
+      @media screen and (max-width: 863px) {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+       }
+    }
+
+    .convertation-name {
+      font-size: 16px;
+      font-size: medium;
+      font-weight: 500;
+      @media screen and (max-width: 863px) {
+       display: none;
+      }
+    }
+  }
+}
+
+/*
+ *  STYLE 2
+ */
+
+.convertations-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.convertations-container::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+.convertations-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #50A5DC;
+}
+
+.onLine-friend {
+ padding: 2px;
+  background-color: green; 
+  color: white;
+  border-radius: 10%;
+  font-size: 12px;
+  text-align: center;
+  @media screen and (max-width: 863px) {
+    display: none;
+  }
+}
+
+.off-friend {
+  background-color: #bbb;
+  color: white;
+  padding: 2px;
+  border-radius: 10%;
+  font-size: 12px;
+  text-align: center;
+  @media screen and (max-width: 863px) {
+    display: none;
+  }
+}

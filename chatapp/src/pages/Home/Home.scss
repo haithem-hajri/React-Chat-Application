@@ -1,0 +1,13 @@
+.home-container {
+  margin-bottom: 5rem;
+    .users-container {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 10px;
+      @media screen and (max-width: 500px) {
+        justify-content: center;
+      }
+    }
+}

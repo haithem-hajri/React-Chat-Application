@@ -1,0 +1,39 @@
+@mixin button() {
+  display: inline-block;  
+  padding: 0.25em 1em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #eee;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+    color: #fff;
+  }
+}
+@mixin flex() {
+  display: flex;
+}
+
+// We define the mixins for two major breakpoints mobile and tablet
+ 
+ // $breakpoint is the variable that can have several values
+ @mixin devices ($breakpoint) { //the name of the mixin is devices
+  
+  @if $breakpoint == tablet {    
+  @media only screen and (max-width: 680px) {
+    @content;
+  }
+}
+
+@if $breakpoint == mobile {
+  @media only screen and (max-width: 481px) {
+    @content;
+  }
+}
+}
