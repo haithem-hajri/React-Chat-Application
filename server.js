@@ -11,7 +11,7 @@ const http = require("http");
 const cors = require("cors");
 const socketIo = require("socket.io");
 const User = require("./models/User");
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 mongoose.Promise = global.Promise;
@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
   socket.on("connect_user", (userId) => {
     var c = User.findByIdAndUpdate(
       userId,
-      { socketId: socket.id, isOnline: true }, 
+      { socketId: socket.id, isOnline: true },
       function (err, result) {
         if (err) {
           console.log(err);
@@ -59,14 +59,13 @@ io.on("connection", (socket) => {
     //{ _id: { $not: { $in: [userId] } } }
     User.find()
       .select("-password")
-      
+
       .then(function (users) {
         io.emit("users", users);
       });
   });
 
-  socket.on("disconnect", () => { 
-    
+  socket.on("disconnect", () => {
     var c = User.findOne({ socketId: socket.id })
       .then((user) => {
         if (user) {
@@ -75,7 +74,7 @@ io.on("connection", (socket) => {
             User.find()
               .select("-password")
               .then(function (users) {
-                io.emit("users", users); 
+                io.emit("users", users);
               })
               .catch((err) => {
                 console.log(err);
@@ -102,6 +101,15 @@ app.use("/api", contact);
 app.use("/api", conversations);
 app.use("/api", messages);
 app.use("/api", notifications);
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("chatapp/build"));
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "chatapp", "build", "index.html"));
+  });
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               CONNECT SERVER                               */
 /* -------------------------------------------------------------------------- */
