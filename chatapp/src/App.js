@@ -19,10 +19,10 @@ import PrivateMessenger from "./pages/private-messenger/PrivateMessenger";
 const Navbar = React.lazy(() => import("./components/navbar/Navbar"));
 const Home = React.lazy(() => import("./pages/Home/Home"));
 export const UserContext = createContext(null);
-export const API_URL = "http://localhost:5000/api";
+export const API_URL = "https://msn-clone.herokuapp.com/api";
 //https://msn-clone.herokuapp.com/api
 //http://localhost:5000/api
-export const Socket = io("http://localhost:5000");
+export const Socket = io("https://msn-clone.herokuapp.com");
 //http://localhost:5000
 const Routing = () => {
   return (
