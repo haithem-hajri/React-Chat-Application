@@ -21,7 +21,9 @@ const Home = React.lazy(() => import("./pages/Home/Home"));
 export const UserContext = createContext(null);
 export const API_URL = "https://msn-clone.herokuapp.com/api";
 //https://msn-clone.herokuapp.com/api
-export const Socket = io("http://localhost:5000");
+//http://localhost:5000/api
+export const Socket = io("https://msn-clone.herokuapp.com");
+//http://localhost:5000
 const Routing = () => {
   return (
     <Routes>
