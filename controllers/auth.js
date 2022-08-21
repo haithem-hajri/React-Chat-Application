@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET_PROD || "secret";
 exports.signup = (req, res) => {
   const url = req.protocol + "://" + req.get("host");
   User.findOne({
-    $or: [{ email: req.body.email }],
+     email: req.body.email 
   })
     .then((user) => {
       if (user) {
